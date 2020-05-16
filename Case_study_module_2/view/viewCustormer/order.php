@@ -1,3 +1,35 @@
+<?php?>
+<table class="table">
+    <thead>
+    <tr>
+        <th style="color:red;">Numerical order</th>
+        <th style="color:red;">gun</th>
+        <th style="color:orangered;">customer</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($customers as $key => $customer): ?>
+    <tr>
+        <td><?php echo ++$key ?></td>
+        <td><?php echo $customer['gun'] ?></td>
+        <td><?php echo $customer['customer'] ?></td>
+        <?php endforeach;?>
+    </tbody>
+</table>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="js/jquery-3.1.1.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+
 <style>
     .container {
         height: 1000px;
@@ -614,54 +646,3 @@
         display: flex; /* so child elements can use flexbox stuff too! */
     }
 </style>
-<div class="header">
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">WebSiteName</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a href="index_3.php">home</a></li>
-                <li><a href="index_3.php?page=add">add new</a></li>
-                <li><a href="index2.php">customer</a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
-<div class="col-12 col-md-12">
-    <div class="row">
-        <div class="col-12">
-            <h1>Addition a customer</h1>
-        </div>
-        <div class="col-12">
-            <form method="post">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Name" required>
-                </div>
-                <div class="form-group">
-                    <label>Birthday</label>
-                    <input type="text" class="form-control" name="birthday" placeholder="year-month-day" required>
-                </div>
-                <div class="form-group">
-                    <label>Address</label>
-                    <input type="text" class="form-control" name="address" placeholder="Address" required>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" class="form-control" name="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="text" class="form-control" name="phone" placeholder="Numbers phone" required>
-                </div>
-                <div class="form-group">
-                    <label>Gender</label>
-                    <input type="text" class="form-control" name="gender" placeholder="Male or Female" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Addition</button>
-                <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
-            </form>
-        </div>
-    </div>
-</div>

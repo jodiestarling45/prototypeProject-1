@@ -624,44 +624,39 @@
                 <li><a href="index_3.php">home</a></li>
                 <li><a href="index_3.php?page=add">add new</a></li>
                 <li><a href="index2.php">customer</a></li>
+                <li><a href="index2.php?page=order">order</a></li>
             </ul>
         </div>
     </nav>
 </div>
-<div class="col-12 col-md-12">
-    <div class="row">
-        <div class="col-12">
-            <h1>Addition a customer</h1>
-        </div>
-        <div class="col-12">
-            <form method="post">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Name" required>
-                </div>
-                <div class="form-group">
-                    <label>Birthday</label>
-                    <input type="text" class="form-control" name="birthday" placeholder="year-month-day" required>
-                </div>
-                <div class="form-group">
-                    <label>Address</label>
-                    <input type="text" class="form-control" name="address" placeholder="Address" required>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" class="form-control" name="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="text" class="form-control" name="phone" placeholder="Numbers phone" required>
-                </div>
-                <div class="form-group">
-                    <label>Gender</label>
-                    <input type="text" class="form-control" name="gender" placeholder="Male or Female" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Addition</button>
-                <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
-            </form>
-        </div>
-    </div>
-</div>
+<h2 style="color:green;">List of customers</h2>
+<a href="./index2.php?page=add">Addition a new customer</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th style="color:red;">Numerical order</th>
+        <th style="color:red;">Name</th>
+        <th style="color:orangered;">Birthday</th>
+        <th style="color:purple;">Address</th>
+        <th style="color:yellowgreen;">Email</th>
+        <th style="color:yellow">Phone</th>
+        <th style="color:yellow">Gender</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($customers as $key => $customer): ?>
+    <tr>
+        <td><?php echo ++$key ?></td>
+        <td><?php echo $customer->name ?></td>
+        <td><?php echo $customer->birthday ?></td>
+        <td><?php echo $customer->address ?></td>
+        <td><?php echo $customer->email ?></td>
+        <td><?php echo $customer->phone ?></td>
+        <td><?php echo $customer->gender ?></td>
+        <td> <a href="./index2.php?page=delete&id=<?php echo $customer->id; ?>" class="btn btn-warning btn-sm">Delete</a></td>
+        <td> <a href="./index2.php?page=edit&id=<?php echo $customer->id; ?>" class="btn btn-sm">Update</a></td>
+        <?php endforeach; ?>
+    </tbody>
+</table>

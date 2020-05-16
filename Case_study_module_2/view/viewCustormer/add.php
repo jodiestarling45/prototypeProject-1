@@ -1,3 +1,8 @@
+<?php
+if (isset($message)) {
+    echo "<p class='alert-info'>$message</p>";
+}
+?>
 <style>
     .container {
         height: 1000px;

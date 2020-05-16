@@ -616,9 +616,11 @@
             }
 
         }
+
         .product-image img {
             width: 100px;
         }
+
         .products {
             display: flex;
             flex-wrap: wrap;
@@ -637,86 +639,92 @@
 <body>
 
 
-    <div class="container">
-        <div class="header">
-            <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">WebSiteName</a>
-                    </div>
-                    <ul class="nav navbar-nav">
-                        <li><a href="index_3.php">home</a></li>
-                        <li><a href="index_3.php?page=add">add new</a></li>
-                    </ul>
+<div class="container">
+    <div class="header">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">WebSiteName</a>
                 </div>
-            </nav>
-        </div>
-        <div class="right">
-            <form action="index_3.php">
-                <input type="hidden" name="page" value="search">
-                <label for="usr">search gun :</label>
-                <input type="text" name="key" class="form-control" id="usr">
-                <input type="submit" value="searching">
-            </form>
-        </div>
-        <div class="left">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <div class="picture">
-                <img style="height: 300px;width: 1200px"
-                     src="https://static.seattletimes.com/wp-content/uploads/2020/02/02132020_background-checks_182006-1560x989.jpg"
-                     alt="">
+                <ul class="nav navbar-nav">
+                    <li><a href="index_3.php">home</a></li>
+                    <li><a href="index_3.php?page=add">add new</a></li>
+                    <li><a href="index2.php">customer</a></li>
+                    <li><a href="index2.php?page=order">order</a></li>
+                </ul>
             </div>
-            <section class="products">
-                <?php foreach ($guns as $key => $gun): ?>
-
-
-                <!-- It's likely you'll need to link the card somewhere. You could add a button in the info, link the titles, or even wrap the entire card in an <a href="..."> -->
-
-
-                <a href="./index_3.php?page=view&id=<?php echo $gun->id; ?>" class="btn btn-sm">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img style="width: 300px; height: 300px" src="images/<?php echo $gun->image?>" alt="">
-                        </div>
-
-                </a>
-                <div class="product-info">
-                    <h5><?php echo $gun->name ?></h5>
-                    <h5><?php echo $gun->series ?></h5>
-                    <h6><?php echo $gun->price ?></h6>
-                    <h6><?php echo $gun->brand ?></h6>
-                    <h6><?php echo $gun->origin ?></h6>
-                    <h6><?php echo $gun->status ?></h6>
-                    <h6><?php echo $gun->type_id ?></h6>
-                    <a href="./index_3.php?page=delete&id=<?php echo $gun->id; ?>"
-                       onclick="return confirm('do you want to delet')" class="btn btn-sm">
-                        <button type="button" class="btn btn-light">delete</button>
-                    </a>
-                    <a href="./index_3.php?page=edit&id=<?php echo $gun->id; ?>" class="btn btn-sm">
-                        <button type="button" class="btn btn-light">update</button>
-                    </a>
-                </div>
+        </nav>
+    </div>
+    <div class="right">
+        <form action="index_3.php">
+            <input type="hidden" name="page" value="search">
+            <label for="usr">search gun :</label>
+            <input type="text" name="key" class="form-control" id="usr">
+            <input type="submit" value="searching">
+        </form>
+    </div>
+    <div class="left">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <div class="picture">
+            <img style="height: 300px;width: 1200px"
+                 src="https://static.seattletimes.com/wp-content/uploads/2020/02/02132020_background-checks_182006-1560x989.jpg"
+                 alt="">
         </div>
+        <section class="products">
+            <?php foreach ($guns as $key => $gun): ?>
 
-        <!-- more products -->
+
+            <!-- It's likely you'll need to link the card somewhere. You could add a button in the info, link the titles, or even wrap the entire card in an <a href="..."> -->
 
 
-        <?php endforeach; ?>
-        </section>
+                <form action="index2.php?">
+                    <input type="hidden" value="buy" name="page">
+                    <input type="hidden" value="<?php echo $gun->name; ?>" name="id">
+                    <a href="./index_3.php?page=view&id=<?php echo $gun->id; ?>" class="btn btn-sm">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img style="width: 300px; height: 300px" src="images/<?php echo $gun->image ?>" alt="">
+                            </div>
 
+                    </a>
+                    <div class="product-info">
+                        <h5><?php echo $gun->name ?></h5>
+                        <h5><?php echo $gun->series ?></h5>
+                        <h6><?php echo $gun->price ?></h6>
+                        <h6><?php echo $gun->brand ?></h6>
+                        <h6><?php echo $gun->origin ?></h6>
+                        <h6><?php echo $gun->status ?></h6>
+                        <h6><?php echo $gun->type_id ?></h6>
+                        <a href="./index_3.php?page=delete&id=<?php echo $gun->id; ?>"
+                           onclick="return confirm('do you want to delet')" class="btn btn-sm">
+                            <button type="button" class="btn btn-light">delete</button>
+                        </a>
+                        <a href="./index_3.php?page=edit&id=<?php echo $gun->id; ?>" class="btn btn-sm">
+                            <button type="button" class="btn btn-light">update</button>
+                        </a>
+                        <button type="submit" class="btn btn-light">buy</button>
+                    </div>
+                </form>
 
     </div>
+    <?php endforeach; ?>
+    </section>
+    <!-- more products -->
 
 
+
+
+
+</div>
 
 
 </body>

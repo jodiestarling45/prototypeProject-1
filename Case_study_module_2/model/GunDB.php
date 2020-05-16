@@ -81,8 +81,9 @@ class GunDB
         return $statement->execute();
     }
     public function search ($key){
-        $sql = "SELECT * FROM `gun` WHERE name LIKE '%$key%'";
+        $sql = "SELECT * FROM `gun` WHERE name LIKE '%$key%' OR price LIKE '%$key%'";
         $stmt = $this->connection->query($sql);
         return $stmt->fetchAll();
     }
+
 }
