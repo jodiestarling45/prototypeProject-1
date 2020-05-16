@@ -1,5 +1,5 @@
 <h2>Update information</h2>
-<form method="post" action="./index_3.php?page=edit">
+<form method="post" action="./index_3.php?page=edit" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo $gun->id; ?>"/>
     <div class="form-group">
         <label>Name</label>
@@ -34,6 +34,10 @@
         <textarea name="status" class="form-control"><?php echo $gun->status; ?></textarea>
     </div>
     <div class="form-group">
+        <label for="">image</label>
+        <input type="file" name="image">
+    </div>
+    <div class="form-group">
         <label>Type_id</label>
         <select name="type_id" id="">
             <option value="1">handgun</option>
@@ -43,7 +47,7 @@
         </select>
     </div>
     <div class="form-group">
-        <input type="submit" value="Update" class="btn btn-primary"/>
+        <input type="submit" name="upload" value="Update" class="btn btn-primary"/>
         <a href="index_3.php" class="btn btn-default">Cancel</a>
     </div>
 </form>

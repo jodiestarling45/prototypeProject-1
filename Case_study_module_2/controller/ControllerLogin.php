@@ -14,7 +14,7 @@ class ControllerLogin
 
     public function __construct()
     {
-        $connection = new DBConnect('mysql:host=localhost;dbname=gun_manager', 'admin', '123456');
+        $connection = new DBConnect('mysql:host=localhost;dbname=manager_guns', 'admin', '123456');
         $this->DBConnectionLogin = new DBLogin($connection->connection());
     }
 

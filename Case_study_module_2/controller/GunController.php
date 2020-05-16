@@ -19,9 +19,11 @@ class GunController
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            include "view/gunView/add.php";
+            include 'view/gunView/add.php';
         } else {
             $name = $_POST['name'];
+            $target = "images/".basename($_FILES['image']['name']);
+            $image = $_FILES['image']['name'];
             $series = $_POST['series'];
             $brand = $_POST['brand'];
             $content = $_POST['content'];
@@ -29,12 +31,13 @@ class GunController
             $price = $_POST['price'];
             $status = $_POST['status'];
             $type_id = $_POST['type_id'];
-            $gun = new Gun($name, $series, $brand, $content, $origin, $price, $status, $type_id);
+            $gun = new Gun($name, $image, $series, $brand, $content, $origin, $price, $status, $type_id);
             $this->gunDB->create($gun);
-            $message = "Created a gun";
-            header('location: index_3.php');
-            include "view/gunView/add.php";
+            move_uploaded_file($_FILES['image']['tmp_name'],$target);
+            $message = "Gun created";
+            header('Location: index_3.php');
         }
+        include 'view/gunView/add.php';
     }
 
     public function index()
@@ -55,11 +58,12 @@ class GunController
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $id = $_GET['id'];
             $gun = $this->gunDB->get($id);
+            include 'view/gunView/delete.php';
 
         } else {
             $id = $_POST['id'];
             $this->gunDB->delete($id);
-            header('location: index_3.php');
+            header('Location: index_3.php');
         }
     }
 
@@ -68,10 +72,13 @@ class GunController
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $id = $_GET['id'];
             $gun = $this->gunDB->get($id);
-            include "view/gunView/edit.php";
+            include 'view/gunView/edit.php';
         } else {
+            $target = "images/".basename($_FILES['image']['name']);
+            $image = $_FILES['image']['name'];
             $id = $_POST['id'];
-            $gun = new Gun($_POST['name'], $_POST['series'], $_POST['brand'], $_POST['content'], $_POST['origin'], $_POST['price'], $_POST['status'], $_POST['type_id']);
+            move_uploaded_file($_FILES['image']['tmp_name'],$target);
+            $gun = new Gun($_POST['name'],$image , $_POST['series'], $_POST['brand'], $_POST['content'], $_POST['origin'], $_POST['price'], $_POST['status'], $_POST['type_id']);
             $this->gunDB->update($id, $gun);
             header('Location: index_3.php');
         }

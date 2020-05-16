@@ -21,7 +21,7 @@ if (isset($message)) {
                 <h1>Addition new gun</h1>
             </div>
             <div class="col-12">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Name</label>
                         <input type="text" class="form-control" name="name" placeholder="Name" required>
@@ -51,6 +51,10 @@ if (isset($message)) {
                         <input type="text" class="form-control" name="status" placeholder="Status" required>
                     </div>
                     <div class="form-group">
+                        <label for="">image</label>
+                        <input type="file" name="image">
+                    </div>
+                    <div class="form-group">
                         <label>Type_id</label>
                         <select name="type_id" id="">
                             <option value="1">handgun</option>
@@ -59,7 +63,7 @@ if (isset($message)) {
                             <option value="4">assault rifle</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Create new</button>
+                    <button type="submit" name="upload" class="btn btn-primary">Create new</button>
                     <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Cancel</button>
                 </form>
             </div>
