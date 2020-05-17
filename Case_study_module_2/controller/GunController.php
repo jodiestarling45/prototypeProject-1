@@ -37,7 +37,6 @@ class GunController
             $message = "Gun created";
             header('Location: index_3.php');
         }
-        include 'view/gunView/add.php';
     }
 
     public function index()

@@ -50,7 +50,7 @@ class CustomerController
     }
 
     public function delete()
-    {
+    {   var_dump($_REQUEST);
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $id = $_GET['id'];
             $customer =$this->customerDB->delete($id);
@@ -88,7 +88,6 @@ class CustomerController
             include 'view/viewCustormer/add.php';
         } else {
             $id = $_REQUEST['id'];
-            var_dump($id);
             $name = $_POST['name'];
             $birthday = $_POST['birthday'];
             $address = $_POST['address'];
@@ -98,8 +97,12 @@ class CustomerController
             $customer = new Customer($name, $birthday, $address, $email, $phone, $gender);
             $this->customerDB->create($customer);
             $customers = $this->customerDB->getInfoByName($name);
-            $id_customer = $this->customerDB->pullInfo($customers);
-            $this->customerDB->buy($id,$id_customer);
+            $customer_name = $this->customerDB->pullInfo($customers);
+            $customer_id = $this->customerDB->getIdCustomer($customers);
+            $this->customerDB->addBuy($customer_id);
+            $id_customer = $this->customerDB->returnFormCustomerId($customer_id);
+            $id_customer_toPull=$this->customerDB->getIdCustomer($id_customer);
+            $this->customerDB->buy($id,$customer_name);
             $message = "thank for buying ";
             header('Location: index2.php?page=');
             include 'view/gunView/buyOnline.php';

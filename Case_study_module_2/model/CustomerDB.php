@@ -63,6 +63,9 @@ class CustomerDB
         $name = $result['name'];
         return $name;
     }
+    public function getIdCustomer($result){
+        return $result['id'];
+    }
     public function delete($id)
     {
         $sql = "DELETE FROM customer WHERE id = ?";
@@ -93,12 +96,24 @@ class CustomerDB
     }
     public function buy($name_gun,$nameCustomer){
 
-        $sql="INSERT INTO `order-gun`( `gun`, `customer`) VALUES ('$name_gun','$nameCustomer')";
+        $sql="INSERT INTO `order-gun`(`gun`, `customer`) VALUES ('$name_gundddddddddddddddd','$nameCustomer')";
         $this->connection->exec($sql);
     }
     public function getOrder(){
         $sql = "SELECT * FROM `order-gun` ";
         $stmt = $this->connection->query($sql);
         return $stmt->fetchAll();
+    }
+    public function addBuy($name){
+        $sql = "INSERT INTO `buy`(`customer_id`) VALUES ('$name')";
+        $this->connection->exec($sql);
+    }
+    public function returnFormCustomerId($customerId){
+        $sql = "SELECT * FROM `buy` WHERE `customer_id` = $customerId";
+        $stmt = $this->connection->query($sql);
+        return $stmt->fetch();
+    }
+    public function getIdCus($result){
+        return $result['id'];
     }
 }
