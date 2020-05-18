@@ -20,6 +20,7 @@
     switch ($page){
         case 'register':$controller->register();break;
         case 'forgotPassword':$controller->getBackPassword();break;
+        case 'logout':$controller->logout();break;
         default:$controller->login();break;
 
     }

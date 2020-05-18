@@ -16,7 +16,7 @@ include 'controller/GunController.php';
 </head>
 <body>
 <?php
-
+session_start();
 $controller = new \Controller\GunController();
 $page = isset($_REQUEST['page'])?$_REQUEST['page'] : null;
 switch ($page) {

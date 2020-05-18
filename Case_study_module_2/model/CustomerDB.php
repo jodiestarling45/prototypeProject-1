@@ -68,7 +68,7 @@ class CustomerDB
     }
     public function delete($id)
     {
-        $sql = "DELETE FROM customer WHERE id = ?";
+        $sql = "DELETE FROM `customer` WHERE `customer`.`id` = ?";
         $statement = $this->connection->prepare($sql);
         $statement->bindParam(1, $id);
         return $statement->execute();
@@ -96,7 +96,7 @@ class CustomerDB
     }
     public function buy($name_gun,$nameCustomer){
 
-        $sql="INSERT INTO `order-gun`(`gun`, `customer`) VALUES ('$name_gundddddddddddddddd','$nameCustomer')";
+        $sql="INSERT INTO `order-gun`(`gun`, `customer`) VALUES ('$name_gun','$nameCustomer')";
         $this->connection->exec($sql);
     }
     public function getOrder(){

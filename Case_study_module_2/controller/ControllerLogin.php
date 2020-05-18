@@ -3,10 +3,8 @@
 namespace controller;
 
 use model\user_password;
-use model\DBConnect;
 use model\DBLogin;
-
-include 'model/DBConnect.php';
+use model\DBconnection;
 
 class ControllerLogin
 {
@@ -14,20 +12,23 @@ class ControllerLogin
 
     public function __construct()
     {
-        $connection = new DBConnect('mysql:host=localhost;dbname=manager_guns', 'admin', '123456');
-        $this->DBConnectionLogin = new DBLogin($connection->connection());
+        $connection = new DBconnection('mysql:host=localhost;dbname=manager_guns', 'admin', '123456');
+        $this->DBConnectionLogin = new DBLogin($connection->connect());
     }
 
     public function login()
     {
 
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            session_start();
+            $_SESSION['email']=$_POST['email'];
             $result = $this->DBConnectionLogin->checkLogin($_POST['email']);
             if ($result) {
                 header('location: index_3.php');
             } else {
                 $message = "wrong password or account";
-                header('location: index_1.php');
+                header("location: index_1.php");
             }
         }
         include 'view/loginpage.php';
@@ -61,5 +62,9 @@ class ControllerLogin
 
         }
         include 'view/forgotPassword.php';
+    }
+    public function logout(){
+        session_destroy();
+        header('location: index_1.php');
     }
 }

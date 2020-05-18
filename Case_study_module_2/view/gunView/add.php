@@ -48,7 +48,10 @@ if (isset($message)) {
                     </div>
                     <div class="form-group">
                         <label>Status</label>
-                        <input type="text" class="form-control" name="status" placeholder="Status" required>
+                        <select name="status" id="">
+                            <option value="avaible">available</option>
+                            <option value="not available">not available</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="">image</label>
@@ -60,7 +63,10 @@ if (isset($message)) {
                             <option value="1">handgun</option>
                             <option value="2">shotgun</option>
                             <option value="3">rifle</option>
-                            <option value="4">assault rifle</option>
+                            <option value="4">Assault rifle</option>
+                            <option value="5">Sub_machine</option>
+                            <option value="6">Machine</option>
+                            <option value="7">Snipe</option>
                         </select>
                     </div>
                     <button type="submit" name="upload" class="btn btn-primary">Create new</button>

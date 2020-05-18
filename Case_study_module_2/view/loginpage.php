@@ -2,7 +2,13 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +18,6 @@
         @import url('https://fonts.googleapis.com/css?family=Numans');
 
         html, body {
-            background: url("https://videohive.img.customer.envatousercontent.com/files/220521301/590_300_K_0.jpg?auto=compress%2Cformat&fit=crop&crop=top&max-h=8000&max-w=590&s=af3eed2f5e090648813bee4080702363");
             background-size: cover;
             background-repeat: no-repeat;
             height: 100%;
@@ -117,9 +122,7 @@
             <div class="card-header">
                 <h3>Sign In</h3>
                 <div class="d-flex justify-content-end social_icon">
-                    <span><i class="fab fa-facebook-square"></i></span>
-                    <span><i class="fab fa-google-plus-square"></i></span>
-                    <span><i class="fab fa-twitter-square"></i></span>
+                   
                 </div>
             </div>
             <div class="card-body">
@@ -155,4 +158,5 @@
         </div>
     </div>
 </div>
+
 </body>

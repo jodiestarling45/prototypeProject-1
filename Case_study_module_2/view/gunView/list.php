@@ -21,7 +21,7 @@
     <style>
         .container {
             height: 1000px;
-            width: 1500px;
+            width: 2000px;
             margin: auto;
         }
 
@@ -288,7 +288,9 @@
         .footer-distributed .footer-center {
             width: 35%;
         }
-
+        html{
+            height: 1000px;
+        }
 
         .footer-distributed .footer-center i {
             background-color: #33383b;
@@ -630,11 +632,16 @@
             padding: 2%;
             flex-grow: 1;
             flex-basis: 16%;
-
+            float: left;
             display: flex; /* so child elements can use flexbox stuff too! */
         }
-    </style>
 
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body>
 
@@ -647,10 +654,14 @@
                     <a class="navbar-brand" href="#">WebSiteName</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="index_3.php">home</a></li>
-                    <li><a href="index_3.php?page=add">add new</a></li>
-                    <li><a href="index2.php">customer</a></li>
+                    <li><a href="index_3.php"><i class="material-icons">computer</i>home</a></li>
+                    <li><a href="index_3.php?page=add"><i class="material-icons">new gun</i></a></li>
+                    <li><a href="index2.php"><i class="glyphicon glyphicon-user"></i>customer</a></li>
                     <li><a href="index2.php?page=order">order</a></li>
+                    <li><h3 style="color: blue"><?php
+                            echo $_SESSION['email']
+                            ?></h3></li>
+                    <li><a href="index_1.php?page=logout">logout</a></li>
                 </ul>
             </div>
         </nav>
@@ -659,8 +670,8 @@
         <form action="index_3.php">
             <input type="hidden" name="page" value="search">
             <label for="usr">search gun :</label>
-            <input type="text" name="key" class="form-control" id="usr">
-            <input type="submit" value="searching">
+            <input type="text" name="key">
+            <i class="fa fa-search" ><button type="submit">search</button></i>
         </form>
     </div>
     <div class="left">
@@ -675,9 +686,7 @@
         <span class="fa fa-star"></span>
         <span class="fa fa-star"></span>
         <div class="picture">
-            <img style="height: 300px;width: 1200px"
-                 src="https://static.seattletimes.com/wp-content/uploads/2020/02/02132020_background-checks_182006-1560x989.jpg"
-                 alt="">
+
         </div>
         <section class="products">
             <?php foreach ($guns as $key => $gun): ?>
@@ -686,30 +695,30 @@
             <!-- It's likely you'll need to link the card somewhere. You could add a button in the info, link the titles, or even wrap the entire card in an <a href="..."> -->
 
 
-                <form action="index2.php?">
+                <form action="index2.php?" style="width: 300px">
                     <input type="hidden" value="buy" name="page">
                     <input type="hidden" value="<?php echo $gun->name; ?>" name="id">
                     <a href="./index_3.php?page=view&id=<?php echo $gun->id; ?>" class="btn btn-sm">
                         <div class="product-card">
                             <div class="product-image">
-                                <img style="width: 300px; height: 300px" src="images/<?php echo $gun->image ?>" alt="">
+                                <img style="width: 200px; height: 200px" src="images/<?php echo $gun->image ?>" alt="">
                             </div>
 
                     </a>
                     <div class="product-info">
-                        <h5><?php echo $gun->name ?></h5>
-                        <h5><?php echo $gun->series ?></h5>
-                        <h6><?php echo $gun->price ?></h6>
-                        <h6><?php echo $gun->brand ?></h6>
-                        <h6><?php echo $gun->origin ?></h6>
-                        <h6><?php echo $gun->status ?></h6>
-                        <h6><?php echo $gun->type_id ?></h6>
+                        <h5>    <?php echo $gun->name ?></h5>
+                        <h5>    <i class="fas fa-bars"></i> <?php echo $gun->series ?></h5>
+                        <h6>    <i class="fas fa-bars"></i> <?php echo $gun->price ?></h6>
+                        <h6>    <i class="fas fa-bars"></i> <?php echo $gun->brand ?></h6>
+                        <h6>    <i class="fas fa-bars"></i> <?php echo $gun->origin ?></h6>
+                        <h6>    <i class="fas fa-bars"></i> <?php echo $gun->status ?></h6>
+                        <h6>    <i class="fas fa-bars"></i> <?php echo $gun->type_id ?></h6>
                         <a href="./index_3.php?page=delete&id=<?php echo $gun->id; ?>"
                            onclick="return confirm('do you want to delet')" class="btn btn-sm">
-                            <button type="button" class="btn btn-light">delete</button>
+                            <button type="button" class="btn btn-light"><i class="glyphicon glyphicon-remove"></i>delete</button>
                         </a>
                         <a href="./index_3.php?page=edit&id=<?php echo $gun->id; ?>" class="btn btn-sm">
-                            <button type="button" class="btn btn-light">update</button>
+                            <button type="button" class="btn btn-light">  <i class="fas fa-file"></i>update</button>
                         </a>
                         <button type="submit" class="btn btn-light">buy</button>
                     </div>
@@ -725,7 +734,11 @@
 
 
 </div>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 
 </body>
+
 </html>

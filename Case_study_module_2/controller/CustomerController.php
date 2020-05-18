@@ -50,16 +50,17 @@ class CustomerController
     }
 
     public function delete()
-    {   var_dump($_REQUEST);
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $id = $_GET['id'];
             $customer =$this->customerDB->delete($id);
-            include 'view/viewCustormer/delete.php';
+
         } else {
             $id = $_POST['id'];
             $this->customerDB->delete($id);
             header('Location: index2.php');
         }
+        include 'view/viewCustormer/delete.php';
     }
 
     public function edit()

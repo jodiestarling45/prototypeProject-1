@@ -83,11 +83,11 @@ class GunController
         }
     }
     public function search(){
-        if ($_SERVER['REQUEST_METHOD']=="POST"){
-            $key = $_POST['key'];
+            $key = $_REQUEST['key'];
             $guns = $this->gunDB->search($key);
-        }
+
         include 'view/gunView/search.php';
+
     }
     public function buyOnline(){
 

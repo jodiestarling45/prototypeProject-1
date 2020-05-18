@@ -10,10 +10,6 @@
         <textarea name="series" class="form-control"><?php echo $gun->series; ?></textarea>
     </div>
     <div class="form-group">
-        <label>content</label>
-        <textarea name="series" class="form-control"><?php echo $gun->content; ?></textarea>
-    </div>
-    <div class="form-group">
         <label>Brand</label>
         <textarea name="brand" class="form-control"><?php echo $gun->brand; ?></textarea>
     </div>
@@ -31,7 +27,10 @@
     </div>
     <div class="form-group">
         <label>Status</label>
-        <textarea name="status" class="form-control"><?php echo $gun->status; ?></textarea>
+        <select name="status" id="">
+            <option value="avaible">available</option>
+            <option value="not available">not available</option>
+        </select>
     </div>
     <div class="form-group">
         <label for="">image</label>
@@ -43,7 +42,10 @@
             <option value="1">handgun</option>
             <option value="2">shotgun</option>
             <option value="3">rifle</option>
-            <option value="4">assault rifle</option>
+            <option value="4">Assault rifle</option>
+            <option value="5">Sub_machine</option>
+            <option value="6">Machine</option>
+            <option value="7">Snipe</option>
         </select>
     </div>
     <div class="form-group">
